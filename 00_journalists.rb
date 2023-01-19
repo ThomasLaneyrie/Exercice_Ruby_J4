@@ -1,12 +1,4 @@
-#Test pour les choix, restera plus qu'à mettre dans chaque case la méthode qui va bien.
-# def nombre_handle()
-#   puts "Choix 0"
-# end
-
-# def plus_court_handle()
-#   puts "Choix 1"
-# end
-
+# Test pour les choix, restera plus qu'à mettre dans chaque case la méthode qui va bien.
 # arr_choix_question = Array.new()
 # arr_choix_question = ["Combien il y a de Handle dans cette array ? Tapez 0", "Quel est le handle le plus court de cette liste ? Tapez 1"]
 # puts arr_choix_question
@@ -50,15 +42,37 @@ def handle_uppercase(arr)
   puts "Nombre de handle avec une majuscule en 1ere lettre : #{arr_return.length}\n\n"
 end
 
-def alphabetic_order (arr)
-  
+def alphabetic_sort (arr)
+  puts arr.sort_by!(&:downcase)
+end
+
+def length_sort(arr)
+  # puts arr.sort_by!(&:length) FONCTIONNE EGALEMENT
+  puts arr.sort!{|x, y| x.length <=> y.length} 
+end
+
+def find_someone(arr,name)
+  puts arr.find_index(name)
+end
+
+def sort_size_handle(arr)
+  # max = (arr.max {|a, b| a.length <=> b.length}).length
+  # puts max
+  for number in 1..(arr.max {|a, b| a.length <=> b.length}).length
+    puts "Nombre de handle avec #{number} caractères : #{arr.count {|i| i.length == number}}"
+  end
 end
 
 #Début code normal
 arr = Array.new()
-arr = ["@jcunniet","@PaulLampon","@Aziliz31","@ssoumier","@marionsouzeau", "@Yopla", "@Salop", "@cocos"]
+arr = ["@jcunniet","@PaulLampon","@Aziliz31","@ssoumier","@marionsouzeau", "@Yopla", "@Salop", "@cocos", "@salut"]
 number = 5
+name="@Salop"
 
 # shorter(arr)
 # handle_X_carac(arr,number)
 # handle_uppercase(arr)
+# alphabetic_sort (arr)
+# length_sort(arr)
+# find_someone(arr,name)
+sort_size_handle(arr)
